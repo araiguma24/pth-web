@@ -10,12 +10,14 @@ public class EntryForm implements Serializable {
 	
 	private static final  long serialVersionUID = 1L;
 	
-	@NotBlank
-	@Email(message="入力されたメールアドレスの形式が正しくありません。")
+	@NotBlank(message="入力してください")
+	@Length(max=60, message="60文字以下で入力してください")
+	@Email(message="入力されたメールアドレスの形式が正しくありません")
 	private String email;
-	@NotBlank
+
+	@NotBlank(message="入力してください")
 	@Length(min=6, max=12, message="パスワードは6文字から12文字の英数字で入力してください")
-	@Pattern(regexp="^[a-zA-Z0-9]+$")
+	@Pattern(regexp="^[a-zA-Z0-9]+$", message="パスワードに使用できるのは英数字のみです")
 	private String password;
 	
 	public String getEmail () {
