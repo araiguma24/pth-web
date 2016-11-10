@@ -7,17 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
+import jp.co.stylez.pth.service.UserServiceImpl;
 import jp.co.stylez.pth.web.from.EntryForm;
-import jp.co.stylez.pth.web.service.UserService;
 
 @Controller
 @RequestMapping("/entry")
 public class EntryController {
 
 	@Autowired
-	private UserService userSevice;
+	private UserServiceImpl userServiceImpl;
 	
 	/**
 	 * 入力画面
@@ -32,31 +31,31 @@ public class EntryController {
 	}
 
 	/**
+	 * 入力内容確認画面
 	 * 
 	 * @param model
 	 * @return
 	 */
 	@RequestMapping("/confirm")
-	public ModelAndView confirm (@Valid EntryForm entryForm, BindingResult result) {
-		final ModelAndView mv = new ModelAndView();
+	public String confirm (@Valid EntryForm entryForm, BindingResult result) {
 		if (result.hasErrors()) {
-			mv.setViewName("/entry/input");
-			return mv;
+			return "/entry/input";
 		}
-		mv.setViewName("/entry/confirm");
-		return mv;
+		return "/entry/confirm";
 	}
 
+	/**
+	 * 登録完了画面
+	 * 
+	 * @param entryForm
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping("/end")
-	public ModelAndView end (EntryForm entryForm, BindingResult result) {
-		final ModelAndView mv = new ModelAndView();
+	public String end (EntryForm entryForm, BindingResult result) {
 		if (result.hasErrors()) {
-			mv.setViewName("/entry/input");
-			return mv;
+			return "/entry/input";
 		}
-		//model作ってセットしてendで表示したい
-		final String userName = this.userSevice.emailToUserName(entryForm.getEmail());
-		mv.setViewName("/entry/end");
-		return mv;
+		return "/entry/end";
 	}
 }

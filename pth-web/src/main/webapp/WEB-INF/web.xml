@@ -20,7 +20,7 @@
   	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			jp.co.stylez.pth.web.config.AppConfig
+			jp.co.stylez.pth.config.AppConfig
 		</param-value>
 	</context-param>
 	
@@ -33,7 +33,7 @@
 		</init-param>
 		<init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>jp.co.stylez.pth.web.config.WebMvcConfig</param-value>
+            <param-value>jp.co.stylez.pth.config.WebMvcConfig</param-value>
         </init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>

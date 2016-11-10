@@ -20,6 +20,7 @@ public class EntryForm implements Serializable {
 	@Pattern(regexp="^[a-zA-Z0-9]+$", message="パスワードに使用できるのは英数字のみです")
 	private String password;
 	
+	private String userName;
 	public String getEmail () {
 		return this.email;
 	}
@@ -34,5 +35,13 @@ public class EntryForm implements Serializable {
 
 	public void setPassword (String password) {
 		this.password = password;
+	}
+
+	public String getUserName () {
+		return this.userName;
+	}
+
+	public void setUserName (String userName) {
+		this.userName = userName;
 	}
 }
