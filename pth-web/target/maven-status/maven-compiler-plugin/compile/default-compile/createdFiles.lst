@@ -1,6 +1,7 @@
 jp\co\stylez\pth\service\UserServiceImpl.class
 jp\co\stylez\pth\config\AppConfig.class
 jp\co\stylez\pth\web\controller\IndexController.class
+jp\co\stylez\pth\aop\ControllerLoggingAspect.class
 jp\co\stylez\pth\web\controller\EntryController.class
 jp\co\stylez\pth\service\UserService.class
 jp\co\stylez\pth\config\WebMvcConfig.class

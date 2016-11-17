@@ -37,9 +37,12 @@ public class EntryController {
 	 * @return
 	 */
 	@RequestMapping("/confirm")
-	public String confirm (@Valid EntryForm entryForm, BindingResult result) {
+	public String confirm (@Valid EntryForm entryForm, BindingResult result) throws Exception {
 		if (result.hasErrors()) {
 			return "/entry/input";
+		}
+		if (entryForm.getPassword().equals("hogehoge")) {
+			throw new Exception();
 		}
 		return "/entry/confirm";
 	}
@@ -56,6 +59,7 @@ public class EntryController {
 		if (result.hasErrors()) {
 			return "/entry/input";
 		}
+		System.out.println(userServiceImpl);
 		return "/entry/end";
 	}
 }
