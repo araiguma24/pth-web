@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jp.co.stylez.pth.service.UserServiceImpl;
+
 @Controller
 public class IndexController {
 
@@ -21,6 +23,8 @@ public class IndexController {
 	Resource resource;
 	@Autowired
 	MessageSource messageSource;
+	@Autowired
+	UserServiceImpl userServiceImpl;
 
 	@RequestMapping("/")
 	public String index(Model model, Locale locale){
@@ -30,7 +34,7 @@ public class IndexController {
 		} catch (IOException e) {
 			System.out.println(e);
 		}
-		final String message = this.messageSource.getMessage("welcome.message", new String[]{"ゲスト"}, locale);
+		final String message = this.messageSource.getMessage("welcome.message", new String[]{this.userServiceImpl.selectUserNameFromStaff(5)}, locale);
 		model.addAttribute("greeting", greeting);
 		model.addAttribute("message",message);
 		return "index";
